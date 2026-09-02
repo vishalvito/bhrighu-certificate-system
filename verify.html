@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Certificate Verification | Bhrighu Adventure
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #0d120f 0%,
+                    #151c17 100%
+                );
+
+            color: #f5f2e8;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 18px;
+        }
+
+
+        .verify-shell {
+            width: 100%;
+            max-width: 760px;
+        }
+
+
+        .brand {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+
+        .brand-kicker {
+            display: block;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            color: #c5a45d;
+
+            margin-bottom: 10px;
+        }
+
+
+        .brand h1 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    28px,
+                    5vw,
+                    46px
+                );
+
+            font-weight: 400;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .brand p {
+            margin-top: 8px;
+
+            color: #9ea8a0;
+
+            font-size: 13px;
+        }
+
+
+        .verify-card {
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.04
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+            border-radius: 20px;
+
+            padding:
+                clamp(
+                    24px,
+                    5vw,
+                    45px
+                );
+
+            box-shadow:
+                0 30px 80px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.35
+                );
+
+            backdrop-filter:
+                blur(12px);
+        }
+
+
+        .status-wrap {
+            text-align: center;
+
+            padding-bottom: 30px;
+
+            border-bottom:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+        }
+
+
+        .status-icon {
+            width: 78px;
+            height: 78px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin:
+                0 auto
+                18px;
+
+            font-size: 34px;
+
+            background:
+                rgba(
+                    100,
+                    190,
+                    120,
+                    0.12
+                );
+
+            border:
+                1px solid
+                rgba(
+                    100,
+                    190,
+                    120,
+                    0.3
+                );
+
+            color: #8ed39b;
+        }
+
+
+        .status-title {
+            font-size: 22px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .status-subtitle {
+            margin-top: 8px;
+
+            color: #a6afa8;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .certificate-details {
+            margin-top: 30px;
+
+            display: grid;
+
+            gap: 18px;
+        }
+
+
+        .detail-row {
+            display: grid;
+
+            grid-template-columns:
+                170px
+                1fr;
+
+            gap: 18px;
+
+            padding-bottom: 15px;
+
+            border-bottom:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+        }
+
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .detail-label {
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.4px;
+
+            color: #7f8a82;
+        }
+
+
+        .detail-value {
+            font-size: 14px;
+
+            color: #f4f0e5;
+
+            line-height: 1.5;
+        }
+
+
+        .participant-value {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 20px;
+
+            color: #d4b76d;
+        }
+
+
+        .valid-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 7px 12px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(
+                    100,
+                    190,
+                    120,
+                    0.12
+                );
+
+            color: #8ed39b;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .invalid-card
+        .status-icon {
+            background:
+                rgba(
+                    210,
+                    80,
+                    80,
+                    0.12
+                );
+
+            border-color:
+                rgba(
+                    210,
+                    80,
+                    80,
+                    0.3
+                );
+
+            color: #e59191;
+        }
+
+
+        .footer-note {
+            text-align: center;
+
+            margin-top: 24px;
+
+            color: #6f7871;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        .loading {
+            text-align: center;
+
+            color: #9ca59f;
+
+            padding: 40px 10px;
+        }
+
+
+        @media
+        (max-width: 600px) {
+
+            .detail-row {
+                grid-template-columns:
+                    1fr;
+
+                gap: 7px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="verify-shell">
+
+
+    <div class="brand">
+
+        <span class="brand-kicker">
+            Official Verification
+        </span>
+
+        <h1>
+            Bhrighu Adventure
+        </h1>
+
+        <p>
+            Digital Certificate Verification System
+        </p>
+
+    </div>
+
+
+    <div
+        class="verify-card"
+        id="verificationCard"
+    >
+
+        <div
+            class="loading"
+            id="loadingState"
+        >
+            Verifying certificate...
+        </div>
+
+    </div>
+
+
+    <div class="footer-note">
+
+        Bhrighu Adventure · Manali, Himachal Pradesh
+        <br>
+
+        This page verifies certificates issued
+        through the official Bhrighu Adventure
+        certificate register.
+
+    </div>
+
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script src="js/supabase.js"></script>
+
+
+<script>
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const certificateId =
+        params.get("id");
+
+
+    const verificationCard =
+        document.getElementById(
+            "verificationCard"
+        );
+
+
+    async function verifyCertificate() {
+
+
+        if (!certificateId) {
+
+            showInvalid(
+                "No certificate ID was provided."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+
+                    .from(
+                        "certificates"
+                    )
+
+                    .select("*")
+
+                    .eq(
+                        "id",
+                        certificateId
+                    )
+
+                    .maybeSingle();
+
+
+            if (error) {
+
+                console.error(
+                    "Verification error:",
+                    error
+                );
+
+
+                showInvalid(
+                    "We could not verify this certificate right now."
+                );
+
+
+                return;
+
+            }
+
+
+            if (!data) {
+
+                showInvalid(
+                    "We could not find this certificate in the Bhrighu Adventure register."
+                );
+
+
+                return;
+
+            }
+
+
+            showValid(
+                data
+            );
+
+
+        }
+
+        catch (error) {
+
+
+            console.error(
+                "Verification failed:",
+                error
+            );
+
+
+            showInvalid(
+                "There was a problem connecting to the certificate database."
+            );
+
+        }
+
+    }
+
+
+
+    function showValid(
+        certificate
+    ) {
+
+
+        verificationCard
+            .classList
+            .remove(
+                "invalid-card"
+            );
+
+
+        verificationCard.innerHTML =
+        `
+
+        <div class="status-wrap">
+
+            <div class="status-icon">
+                ✓
+            </div>
+
+            <h2 class="status-title">
+                CERTIFICATE VERIFIED
+            </h2>
+
+            <p class="status-subtitle">
+                This certificate exists in the official
+                Bhrighu Adventure digital register.
+            </p>
+
+        </div>
+
+
+        <div class="certificate-details">
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Participant
+                </div>
+
+                <div
+                    class="
+                        detail-value
+                        participant-value
+                    "
+                >
+                    ${escapeHtml(
+                        certificate.participant
+                    )}
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Course
+                </div>
+
+                <div class="detail-value">
+
+                    5-Day Rock Climbing Workshop
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Completion Date
+                </div>
+
+                <div class="detail-value">
+
+                    ${escapeHtml(
+                        certificate.completion_date
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Location
+                </div>
+
+                <div class="detail-value">
+
+                    ${escapeHtml(
+                        certificate.location
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Batch / Group
+                </div>
+
+                <div class="detail-value">
+
+                    ${escapeHtml(
+                        certificate.batch
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Certificate ID
+                </div>
+
+                <div class="detail-value">
+
+                    ${escapeHtml(
+                        certificate.id
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Status
+                </div>
+
+                <div class="detail-value">
+
+                    <span class="valid-badge">
+
+                        ✓
+
+                        ${escapeHtml(
+                            certificate.status ||
+                            "Valid"
+                        )}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        `;
+
+    }
+
+
+
+    function showInvalid(
+        message
+    ) {
+
+
+        verificationCard
+            .classList
+            .add(
+                "invalid-card"
+            );
+
+
+        verificationCard.innerHTML =
+        `
+
+        <div class="status-wrap">
+
+            <div class="status-icon">
+                ✕
+            </div>
+
+            <h2 class="status-title">
+
+                CERTIFICATE NOT VERIFIED
+
+            </h2>
+
+
+            <p class="status-subtitle">
+
+                ${escapeHtml(
+                    message
+                )}
+
+            </p>
+
+        </div>
+
+
+        <div class="certificate-details">
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Certificate ID
+                </div>
+
+                <div class="detail-value">
+
+                    ${escapeHtml(
+                        certificateId ||
+                        "Not provided"
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Status
+                </div>
+
+                <div class="detail-value">
+
+                    Not found in official register
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        `;
+
+    }
+
+
+
+    function escapeHtml(
+        value
+    ) {
+
+
+        return String(
+            value ?? ""
+        )
+
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+
+            .replace(
+                /</g,
+                "&lt;"
+            )
+
+            .replace(
+                />/g,
+                "&gt;"
+            )
+
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+
+    verifyCertificate();
+
+</script>
+
+
+</body>
+
+</html>

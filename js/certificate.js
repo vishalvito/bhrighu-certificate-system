@@ -171,8 +171,8 @@ function generateQrCode(certificateId) {
 
     certificateQr.innerHTML = "";
 
-   const verificationUrl =
-    `${window.location.origin}/verify.html?id=${certificateId}`;
+  const verificationUrl =
+    `https://vishalvito.github.io/bhrighu-certificate-system/verify.html?id=${certificateId}`;
     new QRCode(
         certificateQr,
         {

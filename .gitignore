@@ -1,0 +1,17 @@
+# ==========================================
+# BHRIGHU ADVENTURE - PRIVATE FILES
+# ==========================================
+
+# Local certificate administration page
+admin-local.html
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# VS Code local settings
+.vscode/
+
+# Temporary files
+*.tmp
+*.log

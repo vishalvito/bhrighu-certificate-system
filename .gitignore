@@ -15,3 +15,11 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+
+# Private enquiry dashboard
+enquiries-local.html
+
+# Private enquiry dashboard files
+enquiries-local.html
+css/enquiries.css
+js/enquiries.js

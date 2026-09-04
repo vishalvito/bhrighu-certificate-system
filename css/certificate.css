@@ -1008,3 +1008,390 @@ text-overflow: ellipsis;
         flex-direction: column;
     }
 }
+
+/* ==========================================
+   PUBLIC CERTIFICATE VERIFICATION RESULT
+========================================== */
+
+#verificationResult {
+    width: 100%;
+    max-width: 714px;
+    margin-top: 48px;
+    padding: 42px 32px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+/* STATUS ICON */
+
+#verificationResult .verify-status-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+#verificationResult .verify-status-icon.valid {
+    color: #d99a32;
+    border: 1px solid #d99a32;
+}
+
+
+#verificationResult .verify-status-icon.invalid {
+    color: #c96b5c;
+    border: 1px solid #c96b5c;
+}
+
+
+/* TITLE */
+
+#verificationResult h2 {
+    margin: 0 0 10px;
+
+    color: #f4f0e7;
+
+    font-family: inherit;
+    font-size: 26px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* MESSAGE */
+
+#verificationResult .verify-message {
+    max-width: 560px;
+
+    margin: 0 0 32px;
+
+    color: #9d9d94;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* DETAILS */
+
+.verification-details {
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+
+.verify-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(150px, 0.7fr)
+        minmax(200px, 1.3fr);
+
+    gap: 30px;
+
+    padding: 17px 0;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.verify-row span {
+    color: #777b72;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+}
+
+
+.verify-row strong {
+    color: #e8e5dc;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    text-align: right;
+}
+
+
+.verify-row .verified-text {
+    color: #d99a32;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   COURSE BACK LINK
+========================================== */
+
+.course-back-link {
+    display: inline-flex;
+    align-items: center;
+
+    color: #d99a32 !important;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+.course-back-link:hover {
+    opacity: 0.65;
+}
+
+
+/* ==========================================
+   VERIFY LOADING
+========================================== */
+
+.verify-loading {
+    padding: 20px 0;
+
+    color: #9d9d94;
+
+    font-size: 13px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+    #verificationResult {
+        margin-top: 30px;
+        padding: 30px 22px;
+    }
+
+
+    #verificationResult h2 {
+        font-size: 22px;
+    }
+
+
+    .verify-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+
+    .verify-row strong {
+        text-align: left;
+    }
+}
+
+
+/* ==========================================
+   VERIFICATION PAGE FINAL POLISH
+========================================== */
+
+
+/* CENTER MAIN VERIFICATION CONTENT */
+
+.verify-shell,
+.verification-container {
+    width: 100%;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* MANUAL SEARCH BOX */
+
+.manual-verify-box {
+    width: 100%;
+    max-width: 714px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* RESULT CARD */
+
+#verificationResult {
+    width: 100%;
+    max-width: 714px;
+
+    margin:
+        52px auto 0;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   ACTION BELOW CERTIFICATE
+========================================== */
+
+.verification-actions {
+    width: 100%;
+    max-width: 714px;
+
+    margin:
+        24px auto 0;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.course-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #d99a32 !important;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.course-back-link:hover {
+    opacity: 0.75;
+
+    transform:
+        translateX(-3px);
+}
+
+
+/* ==========================================
+   FOOTER POSITION
+========================================== */
+
+.verify-footer {
+    width: 100%;
+    max-width: 714px;
+
+    margin:
+        60px auto 30px;
+
+    padding-top: 24px;
+
+    border-top:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    text-align: center;
+}
+
+
+.verify-footer p {
+    margin: 5px 0;
+
+    color: #686e67;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   BETTER RESULT CARD
+========================================== */
+
+#verificationResult {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.012)
+        );
+}
+
+
+/* SMALL GOLD TOP ACCENT */
+
+#verificationResult::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 72px;
+    height: 2px;
+
+    background: #d99a32;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 760px) {
+
+    .manual-verify-box,
+    #verificationResult,
+    .verification-actions,
+    .verify-footer {
+        width: calc(100% - 32px);
+    }
+
+
+    #verificationResult {
+        margin-top: 32px;
+    }
+
+
+    .verification-actions {
+        margin-top: 20px;
+    }
+
+
+    .verify-footer {
+        margin-top: 45px;
+    }
+}

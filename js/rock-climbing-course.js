@@ -430,7 +430,36 @@ if (courseBookingForm) {
 
             try {
 
+/* ==================================
+   TRACK ENQUIRY SOURCE
+================================== */
 
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const utmSource =
+    params.get("utm_source");
+
+const utmMedium =
+    params.get("utm_medium");
+
+let enquirySource = "direct";
+
+if (
+    utmSource === "instagram" &&
+    utmMedium === "bio"
+) {
+    enquirySource = "instagram_bio";
+}
+
+if (
+    utmSource === "instagram" &&
+    utmMedium === "story"
+) {
+    enquirySource = "instagram_story";
+}
                 /* ==================================
                    SAVE ENQUIRY TO SUPABASE
                 ================================== */
@@ -480,7 +509,8 @@ if (courseBookingForm) {
                                 "5-Day Rock Climbing Course",
 
                             status:
-                                "New"
+                                "New",
+                            source: enquirySource    
 
                         }
                     ]);

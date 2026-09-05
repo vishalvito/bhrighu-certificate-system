@@ -280,7 +280,24 @@ bookingButtons.forEach(
 
         button.addEventListener(
             "click",
-            openBookingModal
+            function() {
+
+                const batchDate =
+                    button.dataset.batchDate;
+
+                if (
+                    batchDate &&
+                    bookingDate
+                ) {
+
+                    bookingDate.value =
+                        batchDate;
+
+                }
+
+                openBookingModal();
+
+            }
         );
 
     }

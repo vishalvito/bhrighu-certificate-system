@@ -23,6 +23,19 @@ const locationInput =
 const batchInput =
     document.getElementById("batch");
 
+const certificateParams =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const enquiryId =
+    certificateParams.get(
+        "enquiry"
+    ) ||
+    sessionStorage.getItem(
+        "certificateEnquiryId"
+    );
+
 const certificateNumber =
     document.getElementById("certificateNumber");
 
@@ -929,6 +942,9 @@ async function issueCertificate() {
                 certificateNumber.value
             ),
 
+        enquiry_id:
+    enquiryId || null,    
+
         status:
             "Valid"
 
@@ -978,154 +994,159 @@ async function issueCertificate() {
         /* ======================================
            EDGE FUNCTION ERROR
         ====================================== */
+if (error) {
 
-        if (error) {
-
-            console.error(
-                "Edge Function error:",
-                error
-            );
-
-
-            let statusCode =
-                error?.context?.status ||
-                error?.status ||
-                error?.statusCode ||
-                null;
+    console.error(
+        "Edge Function error:",
+        error
+    );
 
 
-            let serverMessage =
-                error?.message ||
-                "Could not issue certificate.";
+    let statusCode =
+        error?.context?.status ||
+        error?.status ||
+        error?.statusCode ||
+        null;
 
 
-            /*
-                Try reading JSON returned
-                by the Edge Function.
-            */
-
-            try {
-
-                if (
-                    error?.context &&
-                    typeof error.context.json
-                        === "function"
-                ) {
-
-                    const serverError =
-                        await error.context.json();
+    let serverMessage =
+        error?.message ||
+        "Could not issue certificate.";
 
 
-                    if (serverError?.error) {
-
-                        serverMessage =
-                            serverError.error;
-                    }
+    let serverCode = "";
 
 
-                    if (
-                        !statusCode &&
-                        serverError?.status
-                    ) {
+    /*
+        Try reading JSON returned
+        by the Edge Function.
+    */
 
-                        statusCode =
-                            serverError.status;
-                    }
-                }
-
-            } catch (responseError) {
-
-                console.warn(
-                    "Could not read Edge Function error response:",
-                    responseError
-                );
-            }
-
-
-            /* ==================================
-               FRIENDLY ERROR MESSAGES
-            ================================== */
-
-            if (statusCode === 401) {
-
-                alert(
-                    "Incorrect issuing passphrase."
-                );
-
-                return;
-            }
-
-
-            if (statusCode === 409) {
-
-                alert(
-                    `Certificate ${certificateId} already exists. Please use the next certificate number.`
-                );
-
-
-                await setNextCertificateNumber();
-
-                return;
-            }
-
-
-            if (statusCode === 400) {
-
-                alert(
-                    serverMessage ||
-                    "Some required certificate information is missing."
-                );
-
-                return;
-            }
-
-
-            if (statusCode === 500) {
-
-                alert(
-                    serverMessage ||
-                    "The certificate server encountered an internal error."
-                );
-
-                return;
-            }
-
-
-            alert(
-                serverMessage
-            );
-
-            return;
-        }
-
-
-        /* ======================================
-           CHECK SERVER RESULT
-        ====================================== */
-
-        const result =
-            data;
-
+    try {
 
         if (
-            !result ||
-            result.success !== true
+            error?.context &&
+            typeof error.context.json
+                === "function"
         ) {
 
-            console.error(
-                "Unexpected server response:",
-                result
-            );
+            const serverError =
+                await error.context.json();
 
 
-            alert(
-                result?.error ||
-                "The certificate could not be issued."
-            );
+            if (serverError?.error) {
 
-            return;
+                serverMessage =
+                    serverError.error;
+            }
+
+
+            if (serverError?.code) {
+
+                serverCode =
+                    serverError.code;
+            }
+
+
+            if (
+                !statusCode &&
+                serverError?.status
+            ) {
+
+                statusCode =
+                    serverError.status;
+            }
+
         }
 
+    } catch (responseError) {
+
+        console.warn(
+            "Could not read Edge Function error response:",
+            responseError
+        );
+    }
+
+
+    /* ==================================
+       FRIENDLY ERROR MESSAGES
+    ================================== */
+
+
+    /* DUPLICATE ENQUIRY */
+
+    if (
+        serverCode ===
+        "DUPLICATE_ENQUIRY"
+    ) {
+
+        alert(
+            "A certificate has already been issued for this enquiry."
+        );
+
+        return;
+    }
+
+
+    /* WRONG PASSPHRASE */
+
+    if (statusCode === 401) {
+
+        alert(
+            "Incorrect issuing passphrase."
+        );
+
+        return;
+    }
+
+
+    /* DUPLICATE CERTIFICATE NUMBER / ID */
+
+    if (statusCode === 409) {
+
+        alert(
+            `Certificate ${certificateId} already exists. Please use the next certificate number.`
+        );
+
+
+        await setNextCertificateNumber();
+
+        return;
+    }
+
+
+    /* MISSING INFORMATION */
+
+    if (statusCode === 400) {
+
+        alert(
+            serverMessage ||
+            "Some required certificate information is missing."
+        );
+
+        return;
+    }
+
+
+    /* SERVER ERROR */
+
+    if (statusCode === 500) {
+
+        alert(
+            serverMessage ||
+            "The certificate server encountered an internal error."
+        );
+
+        return;
+    }
+
+
+    alert(
+        serverMessage
+    );
+
+    return;
+}
 
         /* ======================================
            SUCCESS FROM SERVER
@@ -1133,13 +1154,110 @@ async function issueCertificate() {
 
         console.log(
             "Certificate saved online:",
-            result
+            data
         );
 
 
         certificateIssued =
             true;
 
+
+            /* ==========================================
+   LINK CERTIFICATE BACK TO COURSE ENQUIRY
+========================================== */
+
+if (enquiryId) {
+
+    try {
+
+        const enquiryAdminSecret =
+            prompt(
+                "Enter enquiry dashboard passphrase to link this certificate:"
+            );
+
+
+        if (enquiryAdminSecret) {
+
+            const {
+                data: enquiryLinkData,
+                error: enquiryLinkError
+            } =
+                await courseSupabaseClient
+                    .functions
+                    .invoke(
+                        "enquiry-dashboard",
+                        {
+                            body: {
+                                action:
+                                    "mark_certificate_issued",
+
+                                enquiry_id:
+                                    enquiryId,
+
+                                certificate_id:
+                                    certificateId
+                            },
+
+                            headers: {
+                                "x-admin-secret":
+                                    enquiryAdminSecret
+                            }
+                        }
+                    );
+
+
+            if (enquiryLinkError) {
+
+                console.error(
+                    "Could not link certificate to enquiry:",
+                    enquiryLinkError
+                );
+
+                alert(
+                    "Certificate was issued, but the enquiry could not be marked as Certificate Issued."
+                );
+
+            } else if (
+                !enquiryLinkData ||
+                enquiryLinkData.success !== true
+            ) {
+
+                console.error(
+                    "Unexpected enquiry link response:",
+                    enquiryLinkData
+                );
+
+                alert(
+                    enquiryLinkData?.error ||
+                    "Certificate was issued, but the enquiry link failed."
+                );
+
+            } else {
+
+                console.log(
+                    "Certificate linked to enquiry:",
+                    enquiryLinkData
+                );
+
+
+                sessionStorage.removeItem(
+                    "certificateEnquiryId"
+                );
+
+            }
+
+        }
+
+    } catch (linkError) {
+
+        console.error(
+            "Certificate enquiry link failed:",
+            linkError
+        );
+
+    }
+
+}
 
         if (generatePdfBtn) {
 

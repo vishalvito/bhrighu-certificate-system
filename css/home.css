@@ -1,0 +1,1297 @@
+/* ==========================================
+   BHRIGHU ADVENTURE — HOME
+========================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap");
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f5f3ee;
+    color: #171717;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+:root {
+    --dark: #101311;
+    --dark-soft: #181c19;
+    --cream: #f5f3ee;
+    --white: #ffffff;
+    --yellow: #f4c430;
+    --text-soft: #6d716d;
+    --border: rgba(20, 20, 20, 0.12);
+}
+
+
+/* ==========================================
+   GLOBAL
+========================================== */
+
+.section-kicker {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+
+    color: var(--yellow);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+
+    margin-bottom: 55px;
+}
+
+.section-heading h2,
+.intro-copy h2,
+.about-content h2,
+.featured-content h2,
+.contact-section h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(42px, 6vw, 82px);
+    line-height: 0.98;
+    text-transform: uppercase;
+}
+
+.section-heading h2 span,
+.intro-copy h2 span,
+.about-content h2 span,
+.featured-content h2 span,
+.contact-section h2 span {
+    color: var(--yellow);
+}
+
+.section-heading > p {
+    width: min(100%, 430px);
+
+    color: var(--text-soft);
+    line-height: 1.8;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 88px;
+
+    padding: 0 5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    color: white;
+
+    transition:
+        background 0.3s ease,
+        height 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.main-header.scrolled {
+    height: 72px;
+
+    background: rgba(15, 18, 16, 0.96);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.85;
+}
+
+.brand-main {
+    font-family: "Oswald", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.brand-sub {
+    margin-top: 8px;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.45em;
+
+    color: var(--yellow);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.main-nav a {
+    position: relative;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.main-nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--yellow);
+
+    transition: width 0.25s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.nav-verify {
+    color: var(--yellow);
+}
+
+.header-cta {
+    padding: 12px 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    transition: 0.25s ease;
+}
+
+.header-cta:hover {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: #111;
+}
+
+.menu-toggle {
+    display: none;
+
+    width: 38px;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+
+    height: 2px;
+    margin: 7px 0;
+
+    background: white;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.home-hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        150px 8vw
+        130px;
+
+    color: white;
+
+    overflow: hidden;
+
+    background: #141814;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+
+    background:
+        url("../images/home-hero.jpg")
+        center / cover no-repeat;
+
+    transform: scale(1.03);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 10, 8, 0.9) 0%,
+            rgba(8, 10, 8, 0.62) 48%,
+            rgba(8, 10, 8, 0.2) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(8, 10, 8, 0.6),
+            transparent 45%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(850px, 90%);
+}
+
+.hero-kicker {
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+
+    color: var(--yellow);
+}
+
+.hero-content h1 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(70px, 10vw, 145px);
+    line-height: 0.82;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+}
+
+.hero-content h1 span {
+    display: block;
+    color: var(--yellow);
+}
+
+.hero-content > p {
+    max-width: 580px;
+
+    margin-top: 32px;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-actions,
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-top: 38px;
+}
+
+.btn {
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    background: var(--yellow);
+    color: #111;
+}
+
+.btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: #111;
+}
+
+.hero-bottom {
+    position: absolute;
+    z-index: 2;
+
+    left: 8vw;
+    bottom: 40px;
+
+    display: flex;
+    gap: 60px;
+}
+
+.hero-bottom div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hero-bottom span {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-bottom strong {
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.hero-side-text {
+    position: absolute;
+    z-index: 2;
+
+    right: 28px;
+    top: 50%;
+
+    writing-mode: vertical-rl;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ==========================================
+   INTRO
+========================================== */
+
+.intro-section {
+    padding: 120px 8vw;
+
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 50px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.section-number {
+    font-family: "Oswald", sans-serif;
+    font-size: 90px;
+
+    color: rgba(20, 20, 20, 0.08);
+}
+
+.intro-copy {
+    max-width: 850px;
+}
+
+.intro-copy p {
+    max-width: 650px;
+
+    margin-top: 30px;
+
+    font-size: 18px;
+    line-height: 1.9;
+
+    color: var(--text-soft);
+}
+
+
+/* ==========================================
+   UPCOMING ADVENTURES
+========================================== */
+
+.upcoming-section {
+    padding: 120px 8vw;
+}
+
+.adventure-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+.adventure-card {
+    background: white;
+
+    border: 1px solid rgba(20, 20, 20, 0.08);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.adventure-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.12);
+}
+
+.adventure-image {
+    position: relative;
+
+    height: 350px;
+
+    background-position: center;
+    background-size: cover;
+
+    overflow: hidden;
+}
+
+.adventure-image::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.45)
+        );
+}
+
+.climbing-image {
+    background-image:
+        url("../images/adventure-climbing.jpg");
+}
+
+.expedition-image {
+    background-image:
+        url("../images/adventure-expedition.jpg");
+}
+
+.trek-image {
+    background-image:
+        url("../images/adventure-trek.jpg");
+}
+
+.tour-image {
+    background-image:
+        url("../images/adventure-tour.jpg");
+}
+
+.card-badge {
+    position: absolute;
+    z-index: 2;
+
+    top: 22px;
+    left: 22px;
+
+    padding: 9px 12px;
+
+    background: var(--yellow);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+
+    color: #111;
+}
+
+.adventure-content {
+    padding: 30px;
+}
+
+.adventure-meta {
+    margin-bottom: 12px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+
+    color: #999;
+}
+
+.adventure-content h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 38px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.adventure-content > p {
+    margin-top: 18px;
+
+    line-height: 1.75;
+
+    color: var(--text-soft);
+}
+
+.card-footer {
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card-footer div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-footer span {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: #999;
+}
+
+.card-footer strong {
+    font-size: 17px;
+}
+
+.card-link {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    transition: color 0.2s ease;
+}
+
+.card-link:hover {
+    color: #b98b00;
+}
+
+
+/* ==========================================
+   ACTIVITIES
+========================================== */
+
+.activities-section {
+    padding: 120px 8vw;
+
+    background: var(--dark);
+    color: white;
+}
+
+.light-heading h2 {
+    color: white;
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    border-left: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.activity-card {
+    min-height: 260px;
+
+    padding: 35px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.13);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.activity-card:hover {
+    background: var(--yellow);
+    color: #111;
+}
+
+.activity-card > span {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+
+    opacity: 0.5;
+}
+
+.activity-card h3 {
+    margin-top: 70px;
+
+    font-family: "Oswald", sans-serif;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+.activity-card p {
+    margin-top: 12px;
+
+    line-height: 1.6;
+
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.activity-card:hover p {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* ==========================================
+   FEATURED JOURNEY
+========================================== */
+
+.featured-journey {
+    position: relative;
+
+    min-height: 720px;
+
+    padding: 100px 8vw;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        url("../images/featured-expedition.jpg")
+        center / cover no-repeat;
+
+    color: white;
+}
+
+.featured-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 9, 7, 0.92),
+            rgba(7, 9, 7, 0.45),
+            rgba(7, 9, 7, 0.1)
+        );
+}
+
+.featured-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 780px;
+}
+
+.featured-content p {
+    max-width: 580px;
+
+    margin-top: 28px;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.featured-content .btn {
+    margin-top: 35px;
+}
+
+
+/* ==========================================
+   WHY BHRIGHU
+========================================== */
+
+.why-section {
+    padding: 120px 8vw;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+}
+
+.why-grid article {
+    min-height: 270px;
+
+    padding: 30px;
+
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.why-grid article > span {
+    font-size: 10px;
+    font-weight: 700;
+
+    color: #aaa;
+}
+
+.why-grid h3 {
+    margin-top: 70px;
+
+    font-family: "Oswald", sans-serif;
+    font-size: 27px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.why-grid p {
+    margin-top: 15px;
+
+    line-height: 1.7;
+
+    color: var(--text-soft);
+}
+
+
+/* ==========================================
+   ABOUT
+========================================== */
+
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 750px;
+
+    background: #e9e6df;
+}
+
+.about-image {
+    min-height: 650px;
+
+    background:
+        url("../images/about-bhrighu.jpg")
+        center / cover no-repeat;
+}
+
+.about-content {
+    padding: 100px 8vw 100px 7vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-content p {
+    max-width: 590px;
+
+    margin-top: 25px;
+
+    line-height: 1.85;
+
+    color: var(--text-soft);
+}
+
+.about-signature {
+    margin-top: 45px;
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(20, 20, 20, 0.15);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+}
+
+
+/* ==========================================
+   GALLERY
+========================================== */
+
+.gallery-section {
+    padding: 120px 8vw;
+
+    background: white;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr 1fr;
+    grid-template-rows: 300px 300px;
+    gap: 12px;
+}
+
+.gallery-item {
+    background-position: center;
+    background-size: cover;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(0.985);
+    filter: brightness(0.88);
+}
+
+.gallery-one {
+    grid-row: 1 / 3;
+
+    background-image:
+        url("../images/gallery-1.jpg");
+}
+
+.gallery-two {
+    background-image:
+        url("../images/gallery-2.jpg");
+}
+
+.gallery-three {
+    background-image:
+        url("../images/gallery-3.jpg");
+}
+
+.gallery-four {
+    background-image:
+        url("../images/gallery-4.jpg");
+}
+
+.gallery-five {
+    background-image:
+        url("../images/gallery-5.jpg");
+}
+
+
+/* ==========================================
+   CONTACT
+========================================== */
+
+.contact-section {
+    padding: 130px 8vw;
+
+    text-align: center;
+
+    background: var(--dark);
+    color: white;
+}
+
+.contact-section h2 {
+    max-width: 900px;
+    margin: auto;
+}
+
+.contact-section > p {
+    max-width: 600px;
+
+    margin:
+        30px auto
+        0;
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.contact-actions {
+    justify-content: center;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.main-footer {
+    padding: 70px 8vw 25px;
+
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 50px;
+
+    background: #090b09;
+    color: white;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-brand p {
+    margin-top: 25px;
+
+    font-size: 10px;
+    letter-spacing: 0.18em;
+
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.footer-links a {
+    font-size: 13px;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-links a:hover {
+    color: var(--yellow);
+}
+
+.footer-location {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-location span {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+
+    margin-top: 40px;
+    padding-top: 22px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    font-size: 10px;
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 255, 255, 0.35);
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1100px) {
+
+    .main-nav {
+        gap: 17px;
+    }
+
+    .main-nav a {
+        font-size: 10px;
+    }
+
+    .why-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .main-header {
+        height: 72px;
+    }
+
+    .main-nav {
+        position: fixed;
+
+        top: 72px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 35px 7vw;
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+
+        background: #101311;
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+
+    .main-nav a {
+        font-size: 13px;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    .home-hero {
+        min-height: 900px;
+
+        padding:
+            130px 7vw
+            170px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(
+            60px,
+            17vw,
+            100px
+        );
+    }
+
+    .hero-bottom {
+        left: 7vw;
+        right: 7vw;
+
+        gap: 25px;
+
+        justify-content: space-between;
+    }
+
+    .hero-side-text {
+        display: none;
+    }
+
+
+    .intro-section {
+        padding: 90px 7vw;
+
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .section-number {
+        font-size: 55px;
+    }
+
+
+    .upcoming-section,
+    .activities-section,
+    .why-section,
+    .gallery-section {
+        padding: 90px 7vw;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+
+        margin-bottom: 40px;
+    }
+
+
+    .adventure-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .activity-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .featured-journey {
+        min-height: 650px;
+
+        padding: 90px 7vw;
+    }
+
+
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        min-height: 520px;
+    }
+
+    .about-content {
+        padding: 80px 7vw;
+    }
+
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows:
+            repeat(3, 260px);
+    }
+
+    .gallery-one {
+        grid-row: auto;
+    }
+
+
+    .main-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .hero-content h1 {
+        font-size: 58px;
+    }
+
+    .hero-content > p {
+        font-size: 15px;
+    }
+
+    .hero-bottom {
+        flex-wrap: wrap;
+    }
+
+
+    .section-heading h2,
+    .intro-copy h2,
+    .about-content h2,
+    .featured-content h2,
+    .contact-section h2 {
+        font-size: 45px;
+    }
+
+
+    .adventure-image {
+        height: 270px;
+    }
+
+    .card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .activity-grid,
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+    }
+
+    .gallery-item {
+        min-height: 280px;
+    }
+
+
+    .contact-section {
+        padding: 100px 7vw;
+    }
+
+
+    .main-footer {
+        padding: 60px 7vw 25px;
+
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+
+}

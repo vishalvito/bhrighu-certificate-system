@@ -1,0 +1,964 @@
+/* ==========================================
+   HIMALAYAN TOURS
+   BHRIGHU ADVENTURE
+========================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap");
+
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+:root {
+    --bg: #0b0b0b;
+    --bg-soft: #111111;
+    --bg-card: #151515;
+    --text: #f5f5f2;
+    --muted: #a4a4a0;
+    --yellow: #f3c623;
+    --border: rgba(255, 255, 255, 0.12);
+    --border-strong: rgba(255, 255, 255, 0.22);
+    --max-width: 1400px;
+}
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 5%;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-mark {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--yellow);
+    display: grid;
+    place-items: center;
+    color: var(--yellow);
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+}
+
+.brand strong,
+.brand small {
+    display: block;
+    line-height: 1;
+}
+
+.brand strong {
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 3px;
+}
+
+.brand small {
+    margin-top: 6px;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--muted);
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.desktop-nav a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: .25s;
+}
+
+.desktop-nav a:hover {
+    color: var(--yellow);
+}
+
+.menu-button {
+    display: none;
+    background: transparent;
+    border: 0;
+    color: white;
+    font-size: 25px;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.tour-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    background:
+        url("../images/himalayan-tours-hero.jpg")
+        center center / cover no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.92) 0%,
+            rgba(0,0,0,.63) 48%,
+            rgba(0,0,0,.20) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.95) 0%,
+            transparent 55%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(1400px, 90%);
+    margin: 0 auto;
+    padding: 180px 0 75px;
+}
+
+.eyebrow,
+.section-kicker,
+.section-label {
+    display: block;
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    max-width: 1000px;
+    margin-top: 20px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(60px, 9vw, 145px);
+    line-height: .88;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+}
+
+.hero-content h1 span {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.65);
+}
+
+.hero-content > p {
+    max-width: 600px;
+    margin-top: 30px;
+    color: #d1d1cc;
+    font-size: 17px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.button {
+    min-width: 180px;
+    padding: 15px 22px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 11px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.button-primary {
+    background: var(--yellow);
+    color: #080808;
+    border: 1px solid var(--yellow);
+}
+
+.button-primary:hover {
+    background: white;
+    border-color: white;
+}
+
+.button-outline {
+    border: 1px solid rgba(255,255,255,.45);
+}
+
+.button-outline:hover {
+    background: white;
+    color: black;
+}
+
+.hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 70px;
+    border-top: 1px solid var(--border-strong);
+}
+
+.hero-facts > div {
+    min-width: 180px;
+    padding: 22px 50px 0 0;
+}
+
+.hero-facts strong,
+.hero-facts span {
+    display: block;
+}
+
+.hero-facts strong {
+    font-family: "Oswald", sans-serif;
+    font-size: 21px;
+}
+
+.hero-facts span {
+    color: var(--muted);
+    margin-top: 4px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
+
+.intro-section {
+    width: min(var(--max-width), 90%);
+    margin: auto;
+    padding: 130px 0;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 100px;
+    margin-top: 35px;
+}
+
+.intro-grid h2,
+.section-heading h2,
+.custom-section h2,
+.enquiry-intro h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(42px, 5vw, 80px);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.intro-grid h2 span,
+.section-heading h2 span,
+.custom-section h2 span,
+.enquiry-intro h2 span {
+    color: var(--yellow);
+}
+
+.intro-grid p {
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+
+
+/* ==========================================
+   JOURNEYS
+========================================== */
+
+.journeys-section {
+    padding: 120px 5%;
+    background: #efeee8;
+    color: #111;
+}
+
+.section-heading {
+    width: min(var(--max-width), 100%);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 50px;
+}
+
+.section-heading p {
+    max-width: 420px;
+    color: #5e5e59;
+}
+
+.journey-grid {
+    width: min(var(--max-width), 100%);
+    margin: 70px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid #bdbcb5;
+    border-left: 1px solid #bdbcb5;
+}
+
+.journey-card {
+    min-height: 450px;
+    padding: 35px;
+    border-right: 1px solid #bdbcb5;
+    border-bottom: 1px solid #bdbcb5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .35s;
+}
+
+.journey-card:hover {
+    background: #111;
+    color: white;
+}
+
+.journey-number {
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+    color: #8c8c86;
+}
+
+.journey-location {
+    color: #8c8c86;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.journey-card h3 {
+    margin-top: 12px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(40px, 5vw, 70px);
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.journey-card p {
+    max-width: 520px;
+    margin-top: 20px;
+    color: #65655f;
+}
+
+.journey-card:hover p {
+    color: #aaa;
+}
+
+.journey-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 25px;
+}
+
+.journey-tags span {
+    padding: 7px 10px;
+    border: 1px solid #aaa;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.journey-link {
+    display: inline-block;
+    margin-top: 35px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 5px;
+}
+
+.journey-card:hover .journey-link {
+    color: var(--yellow);
+}
+
+
+/* ==========================================
+   TOUR DETAILS
+========================================== */
+
+.tour-detail {
+    position: relative;
+    padding: 130px 5%;
+    overflow: hidden;
+}
+
+.tour-detail.alternate {
+    background: var(--bg-soft);
+}
+
+.tour-number {
+    position: absolute;
+    top: 30px;
+    right: 5%;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(120px, 22vw, 330px);
+    line-height: 1;
+    color: rgba(255,255,255,.025);
+    font-weight: 700;
+}
+
+.tour-detail-grid {
+    position: relative;
+    z-index: 2;
+    width: min(var(--max-width), 100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 100px;
+}
+
+.tour-title > span {
+    color: var(--yellow);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.tour-title h2 {
+    margin-top: 18px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(60px, 8vw, 120px);
+    line-height: .9;
+    text-transform: uppercase;
+}
+
+.tour-title h2 strong {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,.6);
+}
+
+.tour-description > p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.route-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 40px 0;
+    padding: 25px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.route-line span {
+    font-family: "Oswald", sans-serif;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.route-line i {
+    color: var(--yellow);
+    font-style: normal;
+}
+
+.tour-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--border);
+}
+
+.tour-highlights div {
+    padding: 20px;
+    border-right: 1px solid var(--border);
+}
+
+.tour-highlights div:last-child {
+    border-right: 0;
+}
+
+.tour-highlights span,
+.tour-highlights strong {
+    display: block;
+}
+
+.tour-highlights span {
+    color: var(--muted);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tour-highlights strong {
+    margin-top: 7px;
+    font-size: 12px;
+}
+
+.tour-enquiry-button {
+    margin-top: 35px;
+    padding: 15px 22px;
+    background: var(--yellow);
+    color: #080808;
+    border: 1px solid var(--yellow);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.tour-enquiry-button:hover {
+    background: white;
+    border-color: white;
+}
+
+
+/* ==========================================
+   TRAVEL NOTE
+========================================== */
+
+.travel-note {
+    padding: 150px 5%;
+    text-align: center;
+    background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.88)),
+        url("../images/himalayan-tours-hero.jpg")
+        center / cover no-repeat;
+}
+
+.travel-note > span {
+    color: var(--yellow);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.travel-note h2 {
+    max-width: 1000px;
+    margin: 25px auto;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(48px, 7vw, 105px);
+    line-height: .95;
+    text-transform: uppercase;
+}
+
+.travel-note h2 strong {
+    display: block;
+    color: var(--yellow);
+}
+
+.travel-note p {
+    max-width: 680px;
+    margin: auto;
+    color: #c3c3be;
+}
+
+
+/* ==========================================
+   CUSTOM JOURNEY
+========================================== */
+
+.custom-section {
+    width: min(var(--max-width), 90%);
+    margin: auto;
+    padding: 130px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+.custom-section p {
+    max-width: 580px;
+    color: var(--muted);
+}
+
+
+/* ==========================================
+   ENQUIRY FORM
+========================================== */
+
+.enquiry-section {
+    padding: 130px 5%;
+    background: #efeee8;
+    color: #111;
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 100px;
+}
+
+.enquiry-intro {
+    max-width: 550px;
+}
+
+.enquiry-intro p {
+    margin-top: 25px;
+    color: #62625c;
+}
+
+.tour-form {
+    width: 100%;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #c3c2ba;
+    background: transparent;
+    color: #111;
+    padding: 15px;
+    outline: none;
+    transition: .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #111;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 17px 25px;
+    border: 0;
+    background: #111;
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.submit-button:hover {
+    background: var(--yellow);
+    color: #111;
+}
+
+.submit-button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.form-message {
+    display: none;
+    margin-top: 18px;
+    padding: 14px;
+    font-size: 13px;
+}
+
+.form-message.success {
+    display: block;
+    background: #dcebd8;
+    color: #214d1b;
+}
+
+.form-message.error {
+    display: block;
+    background: #f1d5d5;
+    color: #761e1e;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.site-footer {
+    width: min(var(--max-width), 90%);
+    margin: auto;
+    padding: 80px 0 30px;
+}
+
+.footer-brand {
+    font-family: "Oswald", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.footer-brand span {
+    color: var(--yellow);
+}
+
+.site-footer > div:first-child p {
+    color: var(--muted);
+    margin-top: 10px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 45px 0;
+    padding: 25px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.footer-links a {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links a:hover {
+    color: var(--yellow);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #70706c;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 950px) {
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .mobile-menu {
+        position: absolute;
+        z-index: 99;
+        top: 100px;
+        left: 5%;
+        right: 5%;
+        padding: 25px;
+        background: #111;
+        border: 1px solid var(--border);
+    }
+
+    .mobile-menu.active {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .mobile-menu a {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .intro-grid,
+    .tour-detail-grid,
+    .custom-section,
+    .enquiry-section {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .journey-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tour-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .tour-highlights div {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .tour-highlights div:last-child {
+        border-bottom: 0;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+    .site-header {
+        padding: 20px 5%;
+    }
+
+    .brand-mark {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero-content {
+        padding-bottom: 45px;
+    }
+
+    .hero-content h1 {
+        font-size: 54px;
+        letter-spacing: -1px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .hero-facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 45px;
+    }
+
+    .hero-facts > div {
+        min-width: 0;
+        padding-right: 15px;
+    }
+
+    .intro-section,
+    .tour-detail,
+    .custom-section {
+        padding-top: 85px;
+        padding-bottom: 85px;
+    }
+
+    .journeys-section,
+    .enquiry-section {
+        padding-top: 85px;
+        padding-bottom: 85px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .journey-card {
+        min-height: 400px;
+        padding: 25px;
+    }
+
+    .tour-title h2 {
+        font-size: 62px;
+    }
+
+    .route-line {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .route-line i {
+        transform: rotate(90deg);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .travel-note {
+        padding: 100px 5%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+}

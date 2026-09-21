@@ -1,0 +1,1414 @@
+/* =========================================================
+   BHRIGU LAKE TREK
+   Bhrighu Adventure
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --yellow: #f5c400;
+    --yellow-dark: #d7aa00;
+
+    --black: #090909;
+    --black-soft: #111111;
+    --dark: #171717;
+
+    --white: #ffffff;
+    --off-white: #f5f4ef;
+
+    --grey: #777777;
+    --light-grey: #deded8;
+
+    --border: rgba(0, 0, 0, 0.12);
+
+    --max-width: 1240px;
+
+    --header-height: 84px;
+
+    --font-heading: "Manrope", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    position: fixed;
+    z-index: 1000;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: var(--header-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    color: var(--white);
+
+    background: rgba(8, 8, 8, 0.88);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-mark {
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--yellow);
+    color: var(--black);
+
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 15px;
+
+    border-radius: 50%;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.brand-text strong {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.brand-text small {
+    margin-top: 3px;
+
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.58);
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+}
+
+.main-nav a {
+    position: relative;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    transition: 0.25s ease;
+}
+
+.main-nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--yellow);
+
+    transition: width 0.25s ease;
+}
+
+.main-nav a:hover {
+    color: var(--white);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+
+    background: transparent;
+    border: 0;
+
+    color: var(--white);
+
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.trek-hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding:
+        calc(var(--header-height) + 80px)
+        7%
+        90px;
+
+    color: var(--white);
+
+    background:
+        url("../images/bhrigu-lake-hero.jpg")
+        center center / cover
+        no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.55) 48%,
+            rgba(0, 0, 0, 0.15) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.75) 0%,
+            transparent 55%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(850px, 100%);
+}
+
+.eyebrow {
+    margin-bottom: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+
+    color: var(--yellow);
+}
+
+.eyebrow.dark {
+    color: #8b6c00;
+}
+
+.trek-hero h1 {
+    max-width: 850px;
+
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 9vw, 8.5rem);
+    font-weight: 800;
+
+    line-height: 0.88;
+    letter-spacing: -0.06em;
+}
+
+.trek-hero h1 span {
+    display: block;
+
+    color: var(--yellow);
+}
+
+.hero-description {
+    max-width: 630px;
+
+    margin-top: 28px;
+
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-top: 45px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-facts div {
+    min-width: 145px;
+
+    padding: 18px 35px 18px 0;
+    margin-right: 35px;
+}
+
+.hero-facts strong {
+    display: block;
+
+    font-family: var(--font-heading);
+    font-size: 17px;
+}
+
+.hero-facts span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 27px;
+
+    border: 1px solid transparent;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+.btn-primary:hover {
+    background: var(--white);
+}
+
+.btn-outline {
+    border-color: rgba(255, 255, 255, 0.55);
+
+    color: var(--white);
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.scroll-indicator {
+    position: absolute;
+    z-index: 2;
+
+    right: 5%;
+    bottom: 80px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    transform: rotate(90deg);
+    transform-origin: right center;
+
+    font-size: 9px;
+
+    letter-spacing: 0.2em;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.scroll-indicator i {
+    display: block;
+
+    width: 55px;
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.section {
+    max-width: var(--max-width);
+
+    margin: 0 auto;
+
+    padding: 120px 45px;
+}
+
+.section-heading {
+    display: grid;
+
+    grid-template-columns: 90px 1fr;
+
+    margin-bottom: 70px;
+}
+
+.section-number {
+    font-family: var(--font-heading);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    color: #8a8a82;
+}
+
+.section-number.light {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.section-heading h2,
+.enquiry-intro h2 {
+    max-width: 800px;
+
+    font-family: var(--font-heading);
+
+    font-size: clamp(2.7rem, 5vw, 5rem);
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+}
+
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
+
+.overview-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.3fr)
+        minmax(300px, 0.7fr);
+
+    gap: 90px;
+}
+
+.overview-copy {
+    max-width: 720px;
+}
+
+.overview-copy p {
+    margin-bottom: 22px;
+
+    font-size: 17px;
+
+    color: #4f4f4a;
+}
+
+.overview-copy .lead {
+    font-family: var(--font-heading);
+
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
+    font-weight: 500;
+
+    line-height: 1.35;
+
+    color: var(--black);
+}
+
+.trek-summary {
+    padding: 35px;
+
+    background: var(--white);
+
+    border-top: 5px solid var(--yellow);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+}
+
+.summary-label {
+    margin-bottom: 20px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+    border-bottom: 0;
+}
+
+.summary-row span {
+    color: var(--grey);
+
+    font-size: 13px;
+}
+
+.summary-row strong {
+    text-align: right;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.route-section {
+    padding: 100px 7%;
+
+    background: var(--black);
+
+    color: var(--white);
+}
+
+.route-inner {
+    max-width: var(--max-width);
+
+    margin: auto;
+}
+
+.route-inner h2 {
+    max-width: 1100px;
+
+    font-family: var(--font-heading);
+
+    font-size: clamp(2.2rem, 5vw, 5.3rem);
+    font-weight: 700;
+
+    line-height: 1.12;
+
+    letter-spacing: -0.04em;
+}
+
+.route-inner h2 span {
+    color: var(--yellow);
+}
+
+.route-inner > p:last-child {
+    margin-top: 30px;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================================
+   ITINERARY
+========================================================= */
+
+.itinerary-section {
+    position: relative;
+}
+
+.timeline {
+    max-width: 900px;
+
+    margin-left: 90px;
+}
+
+.timeline-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr;
+
+    min-height: 240px;
+}
+
+.timeline-item:not(:last-child)::before {
+    content: "";
+
+    position: absolute;
+
+    left: 31px;
+    top: 65px;
+
+    width: 1px;
+    height: calc(100% - 25px);
+
+    background: #c8c7c0;
+}
+
+.timeline-marker {
+    position: relative;
+    z-index: 2;
+
+    width: 64px;
+    height: 64px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--yellow);
+
+    border-radius: 50%;
+
+    font-family: var(--font-heading);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.timeline-content {
+    padding: 5px 0 60px;
+}
+
+.day-label {
+    margin-bottom: 10px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    color: #887000;
+
+    letter-spacing: 0.16em;
+}
+
+.timeline-content h3 {
+    margin-bottom: 18px;
+
+    font-family: var(--font-heading);
+
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+
+    line-height: 1.2;
+}
+
+.timeline-content > p {
+    max-width: 700px;
+
+    color: #5e5e58;
+}
+
+.day-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.day-tags span {
+    padding: 7px 12px;
+
+    border: 1px solid #cecdc5;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.mountain-note {
+    max-width: 900px;
+
+    margin: 30px 0 0 90px;
+
+    padding: 28px 32px;
+
+    background: #ebe8d9;
+
+    border-left: 4px solid var(--yellow);
+}
+
+.mountain-note strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-family: var(--font-heading);
+}
+
+.mountain-note p {
+    color: #5c5b55;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   INCLUDED
+========================================================= */
+
+.included-section {
+    background: var(--black);
+
+    color: var(--white);
+
+    padding: 120px 45px;
+}
+
+.included-inner {
+    max-width: var(--max-width);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    gap: 90px;
+}
+
+.included-heading h2 {
+    margin-bottom: 25px;
+
+    font-family: var(--font-heading);
+
+    font-size: clamp(2.7rem, 5vw, 5rem);
+
+    line-height: 1;
+    letter-spacing: -0.045em;
+}
+
+.included-heading > p:last-child {
+    max-width: 450px;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.included-columns {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.package-card {
+    padding: 35px;
+
+    background: #151515;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.package-title {
+    margin-bottom: 25px;
+
+    color: var(--yellow);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+.package-card ul {
+    list-style: none;
+}
+
+.package-card li {
+    position: relative;
+
+    padding: 14px 0 14px 22px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 14px;
+}
+
+.package-card li::before {
+    content: "•";
+
+    position: absolute;
+    left: 0;
+
+    color: var(--yellow);
+}
+
+
+/* =========================================================
+   GEAR
+========================================================= */
+
+.gear-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.gear-card {
+    min-height: 280px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--white);
+
+    border-bottom: 4px solid transparent;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.gear-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--yellow);
+}
+
+.gear-card > span {
+    margin-bottom: auto;
+
+    color: #9c9b95;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.gear-card h3 {
+    margin: 45px 0 12px;
+
+    font-family: var(--font-heading);
+
+    font-size: 20px;
+}
+
+.gear-card p {
+    color: #696963;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   DEPARTURE
+========================================================= */
+
+.departure-section {
+    position: relative;
+
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 7%;
+
+    color: var(--white);
+
+    background:
+        url("../images/bhrigu-lake-hero.jpg")
+        center / cover
+        no-repeat;
+}
+
+.departure-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.45)
+        );
+}
+
+.departure-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+.departure-content h2 {
+    font-family: var(--font-heading);
+
+    font-size: clamp(3rem, 7vw, 6.5rem);
+
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.departure-info {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 50px;
+
+    margin: 45px 0;
+}
+
+.departure-info div {
+    min-width: 140px;
+}
+
+.departure-info span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 9px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.departure-info strong {
+    font-family: var(--font-heading);
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   ENQUIRY
+========================================================= */
+
+.enquiry-section {
+    display: grid;
+
+    grid-template-columns: 0.75fr 1.25fr;
+
+    gap: 90px;
+}
+
+.enquiry-intro > p:last-child {
+    max-width: 420px;
+
+    margin-top: 25px;
+
+    color: #62625c;
+}
+
+.trek-enquiry-form {
+    padding: 40px;
+
+    background: var(--white);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-full {
+    margin-top: 22px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #d4d3cc;
+
+    border-radius: 0;
+
+    background: #fafaf7;
+
+    color: var(--black);
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+    min-height: 50px;
+}
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 130px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--yellow-dark);
+
+    box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.12);
+}
+
+.enquiry-submit {
+    margin-top: 25px;
+
+    border: 0;
+}
+
+.enquiry-submit:disabled {
+    opacity: 0.55;
+
+    cursor: wait;
+
+    transform: none;
+}
+
+.form-message {
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 15px 18px;
+
+    font-size: 13px;
+}
+
+.form-message.success {
+    display: block;
+
+    background: #edf7e9;
+
+    border-left: 4px solid #3e8e41;
+
+    color: #245e27;
+}
+
+.form-message.error {
+    display: block;
+
+    background: #fff0ed;
+
+    border-left: 4px solid #c94b3c;
+
+    color: #8a2e23;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    display: grid;
+
+    grid-template-columns: 1fr auto auto;
+
+    align-items: end;
+
+    gap: 60px;
+
+    padding: 65px 7%;
+
+    background: var(--black);
+
+    color: var(--white);
+}
+
+.site-footer strong {
+    font-family: var(--font-heading);
+
+    font-size: 22px;
+}
+
+.site-footer p {
+    margin-top: 7px;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+.footer-links a {
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-links a:hover {
+    color: var(--yellow);
+}
+
+.site-footer .copyright {
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .main-nav {
+        gap: 16px;
+    }
+
+    .main-nav a {
+        font-size: 10px;
+    }
+
+    .overview-grid,
+    .included-inner,
+    .enquiry-section {
+        gap: 50px;
+    }
+
+    .gear-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    :root {
+        --header-height: 72px;
+    }
+
+    .site-header {
+        padding: 0 22px;
+    }
+
+    .brand-text small {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: absolute;
+
+        top: var(--header-height);
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 0;
+
+        padding: 15px 22px 25px;
+
+        background: rgba(8, 8, 8, 0.98);
+
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+
+    .main-nav a {
+        width: 100%;
+
+        padding: 14px 0;
+
+        font-size: 11px;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .main-nav a::after {
+        display: none;
+    }
+
+    .trek-hero {
+        min-height: 850px;
+
+        padding:
+            calc(var(--header-height) + 70px)
+            25px
+            70px;
+    }
+
+    .trek-hero h1 {
+        font-size: clamp(4rem, 17vw, 7rem);
+    }
+
+    .hero-facts div {
+        min-width: 50%;
+
+        margin-right: 0;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .section {
+        padding: 85px 25px;
+    }
+
+    .section-heading {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-bottom: 50px;
+    }
+
+    .overview-grid,
+    .included-inner,
+    .enquiry-section {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        margin-left: 0;
+    }
+
+    .mountain-note {
+        margin-left: 0;
+    }
+
+    .included-section {
+        padding: 85px 25px;
+    }
+
+    .included-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .departure-section {
+        padding: 85px 25px;
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        align-items: start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .brand-mark {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-text strong {
+        font-size: 12px;
+    }
+
+    .trek-hero {
+        min-height: 780px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-facts {
+        margin-top: 30px;
+    }
+
+    .hero-facts div {
+        padding: 15px 15px 15px 0;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .timeline-item {
+        grid-template-columns: 70px 1fr;
+    }
+
+    .timeline-marker {
+        width: 48px;
+        height: 48px;
+    }
+
+    .timeline-item:not(:last-child)::before {
+        left: 23px;
+        top: 50px;
+    }
+
+    .timeline-content {
+        padding-bottom: 45px;
+    }
+
+    .gear-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gear-card {
+        min-height: 220px;
+    }
+
+    .departure-info {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trek-enquiry-form {
+        padding: 25px 20px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+}

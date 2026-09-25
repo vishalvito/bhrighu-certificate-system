@@ -331,6 +331,39 @@ button {
 }
 
 
+.activity-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.activity-card-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.activity-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.activity-card-link:hover {
+    transform: translateY(-4px);
+}
+
+.activity-card-link .activity-explore {
+    transition: transform 0.3s ease;
+}
+
+.activity-card-link:hover .activity-explore {
+    transform: translateX(5px);
+}
+
+
 /* ==========================================
    HERO
 ========================================== */
